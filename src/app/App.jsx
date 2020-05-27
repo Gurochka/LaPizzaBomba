@@ -9,8 +9,10 @@ function App() {
   return (
     <Router>
       <Header />
-      <Route path="/" exact component={Menu} />
-      <Route path="/cart" component={Cart} />
+      <div className="flex-grow-1">
+        <Route path="/" exact component={Menu} />
+        <Route path="/cart" component={Cart} />
+      </div>
       <Footer />
     </Router>
   )

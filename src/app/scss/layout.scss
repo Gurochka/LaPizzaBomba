@@ -7,8 +7,10 @@
 @import "spacing";
 
 @import "utilities/flex";
+@import "utilities/sizes";
 
 @import "components/header";
+@import "components/footer";
 
 *, *:before, *:after {
   box-sizing: border-box;

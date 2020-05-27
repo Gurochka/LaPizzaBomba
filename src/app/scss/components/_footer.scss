@@ -1,0 +1,22 @@
+footer{
+
+  background-color: $black;
+  color: $white;
+  word-wrap: break-word;
+
+  .main-footer{
+    display: flex;
+    justify-content: space-around;    
+    & > div{
+      width: 30%;
+      margin-bottom: 1rem;
+    }
+  }
+  h5{
+    margin-bottom: 0.5rem;
+  }
+  .copyright{
+    border-top: 1px solid rgba($white, 0.2);
+    text-align: center;
+  }
+}

@@ -54,6 +54,14 @@ $breakpoints: (
     "desktop-wide":     1440px
 );
 
+$sizes: (
+    25: 25%,
+    50: 50%,
+    75: 75%,
+    100: 100%,
+    auto: auto
+);
+
 $spacer: 1rem !default;
 $spacers: (
     0: 0,
