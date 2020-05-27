@@ -16,8 +16,7 @@ class Header extends React.Component {
         </div>
 
         <div className="d-flex align-items-center">
-          <Link to="/cart">Cart</Link>
-          <SVG className="cart mr-5" src="/src/public/images/shopping-basket-solid.svg" />
+          <Link to="/cart"><SVG className="cart mr-5" src="/src/public/images/shopping-basket-solid.svg" /></Link>
         </div>
       </nav>
     )

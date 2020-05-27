@@ -7,7 +7,7 @@ class Footer extends React.Component {
     return  (
       <footer>
         <div className="main-footer">
-          <div className="">
+          <div className="logo">
             <h5>Logo</h5>
           </div>
           <div className="about">
