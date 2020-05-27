@@ -1,4 +1,10 @@
 @import "~normalize.css/normalize";
+@import "variables";
+@import "mixins";
+@import "container";
+@import "typography";
+@import "form";
+@import "spacing";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -7,4 +13,33 @@
 body{
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
+  color: $text-main;
+  background-color: $white;
+}
+
+.d-flex{
+  display: flex;
+}
+
+.relative{
+  position: relative;
+}
+
+.btn{
+  background-color: $gray-200;
+  border: 0;
+  padding: 0.7rem 1rem;
+
+  &:hover{
+    background-color: $gray-300;
+    cursor: pointer;
+  }
+}
+
+.btn.btn-primary{
+  background-color: $primary-color;
+  color: white;
+  &:hover{
+    background-color: darken($primary-color, 10%);
+  }
 }

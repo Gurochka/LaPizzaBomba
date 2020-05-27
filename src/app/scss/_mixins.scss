@@ -1,0 +1,26 @@
+@mixin flex-container($direction: row, $justify: null, $align-items: null, $align-content: null, $flow: null, $wrap: null){
+  display: flex;
+  flex-direction: $direction;
+
+  @if $flow { flex-flow: $flow; }
+  @if $justify { justify-content: $justify; }
+  @if $align-items { align-items: $align-items; } 
+  @if $align-content { align-self: $align-content; }
+  @if $wrap { flex-wrap: $wrap; }
+}
+
+@mixin media($breakpoint){
+  $value: map-get($breakpoints, $breakpoint);
+  @media (min-width: #{$value}){
+    @content;
+  }
+}
+
+@mixin absolute($top: null, $bottom: null, $left: null, $right: null){
+  position: absolute;
+  
+  @if $top { top: $top; }
+  @if $bottom { bottom: $bottom; }
+  @if $left { left: $left; }
+  @if $right { right: $right; }      
+}

@@ -1,0 +1,38 @@
+// REM sizes for media requests
+html{
+  font-size: 12px;
+  line-height: 16px;
+
+  @include media("tablet-portrait"){
+    font-size: 13px;
+    line-height: 20px;
+  }
+  @include media("tablet-landscape"){
+    font-size: 14px;
+    line-height: 24px;
+  }
+  @include media("desktop-wide"){
+    font-size: 16px;
+    line-height: 28px;    
+  }
+}
+
+// Gray colors
+@each $color-name, $color in $grays {
+  .text-gray-#{$color-name}{
+    color: $color;
+  }
+}
+
+// Text Alignment
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.text-left   { text-align: left; }
+
+a{
+  color: $primary-color;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}

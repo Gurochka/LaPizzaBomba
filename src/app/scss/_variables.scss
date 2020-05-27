@@ -1,0 +1,65 @@
+// Color system
+$white:    #FDFFFC !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #011627 !default;
+
+$grays: (
+    "100": $gray-100,
+    "200": $gray-200,
+    "300": $gray-300,
+    "400": $gray-400,
+    "500": $gray-500,
+    "600": $gray-600,
+    "700": $gray-700,
+    "800": $gray-800,
+    "900": $gray-900
+);
+
+// Color palette
+$primary-color: #FF9F1C;
+$secondary-color: #E71D36;
+$tertiary-color: #2EC4B6;
+
+$success-color: #19b453; // main green
+$info-color: #56b0ee;   // main blue
+$warning-color: #fcb53f; 
+$danger-color: #f91942;
+
+$theme-colors: (
+    "success":    $success-color,
+    "info":       $info-color,
+    "warning":    $warning-color,
+    "danger":     $danger-color
+);
+
+// Text colors
+
+$text-main: $gray-700;
+
+// Breakpoints
+
+$breakpoints: (
+    "phone":            576px,
+    "tablet-portrait":  768px,
+    "tablet-landscape": 1024px,
+    "desktop":          1200px,
+    "desktop-wide":     1440px
+);
+
+$spacer: 1rem !default;
+$spacers: (
+    0: 0,
+    1: ($spacer * .25),
+    2: ($spacer * .5),
+    3: $spacer,
+    4: ($spacer * 1.5),
+    5: ($spacer * 3)
+);
