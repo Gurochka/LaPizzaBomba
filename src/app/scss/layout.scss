@@ -1,14 +1,14 @@
 @import "~normalize.css/normalize";
 @import "variables";
 @import "mixins";
-@import "container";
-@import "typography";
-@import "form";
-@import "spacing";
 
+@import "utilities/container";
 @import "utilities/flex";
 @import "utilities/sizes";
+@import "utilities/spacing";
+@import "utilities/typography";
 
+@import "components/form";
 @import "components/header";
 @import "components/footer";
 
