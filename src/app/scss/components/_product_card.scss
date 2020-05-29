@@ -1,3 +1,18 @@
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: 19.79;
+  }
+  25% {
+    stroke-dashoffset: 0;
+  }
+  75%{
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 19.79;
+  }  
+}
+
 .product-card{
   position: relative;
   margin: 1rem;
@@ -25,5 +40,40 @@
     text-align: center;
     font-size: 0.8em;
     font-weight: 600;
+  }
+
+  .btn-add-to-cart{
+    text-transform: uppercase;
+    font-size: 0.85em;
+    font-weight: 600;
+    position: relative;
+    padding: 0.7rem 1.5em;
+
+    b{
+      transform: translate(0, 0);
+      transition: transform 0.4s ease-in-out;
+      display: inline-block;
+    }
+
+    svg{
+      @include absolute($right: 0.2rem, $top: 0.2rem);
+      visibility: hidden;
+      width: 28px;
+      height: 28px;
+    }
+
+    &.added{
+      b{
+        transform: translate(-10px, 0);
+      }
+      svg{
+        visibility: visible;
+      }
+      .check {
+        stroke-dashoffset: 19.79;
+        -webkit-animation: dash-check 2s .35s ease-in-out forwards;
+        animation: dash-check 2s .35s ease-in-out forwards;
+      }
+    }
   }
 }

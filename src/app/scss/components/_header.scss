@@ -6,7 +6,7 @@ nav.menu{
   background-color: $white;
   z-index: 10;
   width: 100%;
-  position: fixed;  
+  position: fixed;
 
   .brand{
     color: $primary-color;
@@ -32,7 +32,25 @@ nav.menu{
       cursor: pointer;
     }
   }
-  .cart{
-    width: 2rem;
-  }
+
+  .header-cart{
+    position: relative;
+    svg{
+      width: 2rem;
+      height: 2rem;
+    }
+    .badge{
+      @include absolute($top: -0.5rem, $right: -1rem);
+      background-color: red;
+      width: 23px;
+      height: 23px;
+      line-height: 23px;
+      font-size: 12px;
+      background-color: $primary-color;
+      border-radius: 50%;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+    }
+  }  
 }

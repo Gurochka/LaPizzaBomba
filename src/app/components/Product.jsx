@@ -12,9 +12,18 @@ export default class Product extends React.Component {
     this.setState({ selectedIdx: selectedIdx })
   }
 
+  handleAddToCart = () => {
+    this.buttonEl.classList.add('added');
+
+    setTimeout(() => {
+      this.buttonEl.classList.remove('added');
+    }, 2350);
+    this.props.addToCart(this.props.item, store.pizzaSizes[this.state.selectedIdx]);
+  }
+
   render(){
     const { item } = this.props;
-    const { selectedIdx } = this.state;
+    const { selectedIdx, isAdded } = this.state;
     const isPizza = store.isPizza(item);
     const selected = store.pizzaSizes[selectedIdx]
 
@@ -44,9 +53,20 @@ export default class Product extends React.Component {
               </div>
             )
           }
-          <div className="d-flex justify-content-between py-2 align-content-center">
+          <div className="d-flex justify-content-between py-2 align-items-center">
             <b>{ isPizza ? item.price[selectedIdx] : item.price } $</b>
-            <button className="btn btn-primary">Add</button>
+
+            <button 
+              className={`btn btn-primary btn-add-to-cart`} 
+              onClick={this.handleAddToCart}
+              ref={(el) => { this.buttonEl = el }}
+            >
+              <b>Add</b>
+                <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                  <path strokeDasharray="19.79 19.79" strokeDashoffset="19.79" className="check" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="square" strokeMiterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                </svg>
+            </button>
+
           </div>
         </div>
       </div>
