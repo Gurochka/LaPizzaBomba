@@ -8,8 +8,8 @@ class Store {
   }
   
   pizzaSizes = [
-    { id: 'm', title: 'regular' },
-    { id: 'l', title: 'large' } 
+    { id: 'm', title: 'regular', diameter: '25' },
+    { id: 'l', title: 'large', diameter: '30' }
   ]
 
   @observable categories = []
@@ -35,6 +35,9 @@ class Store {
         return res
       })
   }
+
+  isPizza = (good) => good.categoryId == 1
+  isDrink = (good) => good.categoryId == 2
 
   @action getCart(){
 

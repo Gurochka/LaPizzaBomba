@@ -14,5 +14,8 @@
   }
   @include media("desktop"){
     max-width: 1140px;
-  }    
+  }
+  @include media("desktop-wide"){
+    max-width: 1340px;
+  }
 }

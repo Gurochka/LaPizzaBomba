@@ -8,9 +8,14 @@
 @import "utilities/spacing";
 @import "utilities/typography";
 
+@import "components/footer";
 @import "components/form";
 @import "components/header";
-@import "components/footer";
+@import "components/product_card";
+@import "components/toggler";
+
+@import "pages/cart";
+@import "pages/menu";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -48,4 +53,8 @@ body{
   &:hover{
     background-color: darken($primary-color, 10%);
   }
+}
+
+hr{
+  border-top: 1px solid $gray-300;
 }
