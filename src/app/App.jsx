@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <div className="flex-grow-1">
+      <div className="flex-grow-1 layout-wrapper">
         <Route path="/" exact component={Menu} />
         <Route path="/cart" component={Cart} />
       </div>

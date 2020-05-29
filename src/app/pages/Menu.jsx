@@ -23,7 +23,7 @@ class Menu extends React.Component {
     const { categories, goods } = store;
 
     return  (
-      <div className="page-cart">
+      <div className="page-cart mb-4">
         {
           categories.map(category => (
             <div key={category.id}>

@@ -33,13 +33,13 @@ export default class Product extends React.Component {
             isPizza && (
               <>
                 <Toggler values={store.pizzaSizes} selected={selected} onSelect={this.handleSelectSize} />
-                <div className="text-right"> {item.weight[selectedIdx]}gr, {selected.diameter} cm </div>
+                <div className="product-weight"> {item.weight[selectedIdx]}gr, {selected.diameter} cm </div>
               </>
             )
           }
           {
             !isPizza && item.weight && (
-              <div className="text-right"> 
+              <div className="product-weight"> 
                 { item.weight } { store.isDrink(item) ? 'l' : 'gr' }
               </div>
             )
