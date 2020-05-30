@@ -1,6 +1,31 @@
 .form-control{
-  border: 1px solid $gray-300;
+  border: 1px solid $primary-color;
   width: 100%;
   padding: 0.5rem 1rem;  
   font-size: 0.9em;
+}
+
+.input-number{
+  div{
+    border: 1px solid $primary-color;
+    padding: 0 0.7rem;
+    transition: all 200ms;
+
+    &:hover{
+      background-color: $primary-color;
+      color: $white;
+      cursor: pointer;
+    }
+  }
+  svg{
+    width: 0.5rem;
+    opacity: 0.8;
+  }
+
+  input{
+    border-left: none;
+    border-right: none;
+    width: 3rem;
+    text-align: center;
+  }
 }
