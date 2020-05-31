@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css'
 import './scss/layout.scss'
 
 import React, { createContext } from 'react'

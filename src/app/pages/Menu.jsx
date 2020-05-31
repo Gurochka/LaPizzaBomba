@@ -2,36 +2,22 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import store from 'App/store'
 
-import Product from 'App/components/Product'
+import ProductList from 'App/components/ProductList'
+import Loader from 'App/components/UI/Loader'
 
 @observer
 class Menu extends React.Component {
-  addToCart = (product, size) => {
-    store.addToCart(product, size);
-  }
-
-  filteredItems = (category_id) => store.goods.filter(good => good.categoryId == category_id);
-
   render(){
-    const { categories, goods } = store;
+    const { categories, loadingCategories } = store;
 
     return  (
       <div className="page-cart mb-4">
+        <Loader loading={loadingCategories} />
         {
           categories.map(category => (
             <div key={category.id}>
               <h1 className="text-center">{category.title}</h1>
-              <div className="container product-list">
-                {
-                  this.filteredItems(category.id).map(item => (
-                    <Product
-                      item={item} 
-                      key={item.id}
-                      addToCart={this.addToCart}
-                    />
-                  ))
-                }
-              </div>
+              <ProductList categoryId={category.id} />
             </div>
           ))
         }

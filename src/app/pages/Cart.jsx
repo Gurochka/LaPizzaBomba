@@ -26,6 +26,7 @@ class Cart extends React.Component {
             <div className="price">{total} $</div>
           </li>
         </ul>
+        <button className="btn btn-primary">Proceed to checkout</button>
 
       </div>
     )

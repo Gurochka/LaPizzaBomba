@@ -1,4 +1,5 @@
-import { action, observable, computed, toJS } from 'mobx';
+import { action, observable, computed, toJS, runInAction } from 'mobx';
+import { toast } from 'react-toastify'
 
 class Store {
   constructor(){
@@ -6,17 +7,47 @@ class Store {
     this.getGoods()
     this.getCategories()
   }
+
+  fetchUrl(url){
+    return fetch('http://localhost:3000' + url)
+      .then(res => {
+        if (res.ok) return res.json();
+        return { error: res.status + ' ' + res.statusText }
+      })
+      .catch(error => {
+        console.log('error?', error);
+      })
+  }
   
+  /* ------------------- UI ---------------------- */
+
+  loadingGoods = false
+  loadingCategories = false
+
+  @action showFetchError = (message) => {
+    toast(message, {
+      type: 'error'
+    });
+  }
+
   /* ------------------ categories ------------------ */
 
   @observable categories = []
 
   @action getCategories(){
-    return fetch('http://localhost:3000/categories')
-      .then(res => res.json())
-      .then(categories => {
-        this.categories = categories
-        return categories
+    this.loadingCategories = true;
+
+    return this.fetchUrl('/categories')
+      .then(res => {
+        runInAction(() => {
+          this.loadingCategories = false
+          
+          if (res.error){
+            this.showFetchError(`Couldn't load categories of goods. Error: ${res.error}`);
+          } else {
+            this.categories = res
+          }
+        })
       })
   }
 
@@ -36,11 +67,18 @@ class Store {
   @observable goods = []
 
   @action getGoods(){
-    return fetch('http://localhost:3000/goods')
-      .then(res => res.json())
+    this.loadingGoods = true;
+    return this.fetchUrl('/goods')
       .then(res => {
-        this.goods = res
-        return res
+        runInAction(() => {
+          this.loadingGoods = false
+
+          if (res.error) {
+            this.showFetchError(`Couldn't load goods. Error: ${res.error}`);
+          } else {
+            this.goods = res
+          }
+        })
       })
   }
 
