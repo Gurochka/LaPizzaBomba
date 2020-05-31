@@ -1,0 +1,24 @@
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg) scale(0.5);
+  }
+  50%{
+    transform: rotate(180deg) scale(1)
+  }
+  100% {
+    transform: rotate(360deg) scale(0.5);
+  }
+}
+.loader-blocker{
+  @include absolute($top: 0, $bottom: 0, $left: 0, $right: 0);
+  background-color: rgba($gray-400, 0.3);
+  z-index: 1;
+  .loader{
+    @include absolute($top: 50%, $right: 50%);
+    svg{
+      width: 3rem;
+      color: $secondary-color;
+      animation: spinner 2s linear infinite;
+    }
+  }
+}
