@@ -16,9 +16,9 @@ export default class ProductList extends React.Component {
     const goods = store.goods.filter(good => good.categoryId == this.props.categoryId);
 
     return (
-      <div className="container relative">
+      <div className="container relative py-5">
         <Loader loading={loadingGoods} />
-        { goods.length == 0 && <div className="text-center my-2"> There are no goods found. </div> }
+        { goods.length == 0 && !loadingGoods && <div className="text-center my-2"> There are no goods found. </div> }
         <div className="product-list">
         {
           goods.map(item => (

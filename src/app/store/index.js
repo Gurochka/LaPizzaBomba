@@ -14,17 +14,15 @@ class Store {
         if (res.ok) return res.json();
         return { error: res.status + ' ' + res.statusText }
       })
-      .catch(error => {
-        console.log('error?', error);
-      })
+      .catch(error => { this.showFetchError(`Error: ${error}`) })
   }
   
   /* ------------------- UI ---------------------- */
 
-  loadingGoods = false
-  loadingCategories = false
+  @observable loadingGoods = false
+  @observable loadingCategories = false
 
-  @action showFetchError = (message) => {
+  showFetchError = (message) => {
     toast(message, {
       type: 'error'
     });
@@ -68,7 +66,8 @@ class Store {
 
   @action getGoods(){
     this.loadingGoods = true;
-    return this.fetchUrl('/goods')
+
+    this.fetchUrl('/goods')
       .then(res => {
         runInAction(() => {
           this.loadingGoods = false

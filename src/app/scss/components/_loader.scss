@@ -14,7 +14,7 @@
   background-color: rgba($gray-400, 0.3);
   z-index: 1;
   .loader{
-    @include absolute($top: 50%, $right: 50%);
+    @include absolute($top: calc(50% - 1.5rem), $right: calc(50% - 1.5rem));
     svg{
       width: 3rem;
       color: $secondary-color;
