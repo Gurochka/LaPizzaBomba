@@ -16,7 +16,7 @@ export default class Product extends React.Component {
     this.buttonEl.classList.add('added');
 
     setTimeout(() => {
-      this.buttonEl.classList.remove('added');
+      if (this.buttonEl) this.buttonEl.classList.remove('added');
     }, 2350);
     this.props.addToCart(this.props.item, store.pizzaSizes[this.state.selectedIdx]);
   }

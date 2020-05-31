@@ -4,7 +4,7 @@ import PlusIcon from 'App/components/UI/icons/PlusIcon'
 
 class InputNumber extends React.Component {
   onChangeAmount(diff){
-    let new_value = (this.props.value + diff) || parseInt(this.props.diff || 1, 10)
+    let new_value = (this.props.value + diff) || parseInt(this.props.diff || 0, 10)
     this.props.onChange(new_value);
   }
 
