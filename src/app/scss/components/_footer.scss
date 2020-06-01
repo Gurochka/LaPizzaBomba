@@ -6,9 +6,16 @@ footer{
   .main-footer{
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
+    margin: 1rem 0 0 1rem;
     & > div{
-      width: 30%;
       margin-bottom: 1rem;
+    }
+    @include media("tablet-landscape"){
+      flex-direction: row;
+      & > div{
+        width: 30%;
+      }
     }
   }
   h5{

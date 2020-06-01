@@ -47,7 +47,7 @@ class Cart extends React.Component {
         {
           this.step == 'checkout' && (
             <>
-              <h1 className="text-center with-return-btn w-50">
+              <h1 className="text-center with-return-btn">
                 <div className="return-btn" onClick={() => this.changeStep('cart')}>
                   <SVG src="/src/public/images/back-icon.svg" />
                   <span>Return to cart</span>
