@@ -1,6 +1,8 @@
 import { action, observable, computed, toJS, runInAction } from 'mobx';
 import { toast } from 'react-toastify'
 
+const globalURL = 'https://la-pizza-bomba-server.herokuapp.com';
+
 class Store {
   constructor(){
     this.getCart()
@@ -9,7 +11,7 @@ class Store {
   }
 
   fetchUrl(url){
-    return fetch('http://localhost:3000' + url)
+    return fetch(globalURL + url)
       .then(res => {
         if (res.ok) return res.json();
         return { error: res.status + ' ' + res.statusText }
@@ -19,7 +21,7 @@ class Store {
 
   fetchPostUrl(url, data){
     console.log('i ry tio fetch')
-    return fetch('http://localhost:3000' + url, {
+    return fetch(globalURL + url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

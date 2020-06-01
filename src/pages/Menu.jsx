@@ -21,6 +21,9 @@ class Menu extends React.Component {
             </div>
           ))
         }
+        {
+          categories.length == 0 && !loadingCategories && <h1>Our server is down right now, and we can't load anything. Please, contact administrator.</h1>
+        }
       </div>
     )
   }
