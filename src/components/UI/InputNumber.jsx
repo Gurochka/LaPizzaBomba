@@ -22,7 +22,7 @@ class InputNumber extends React.Component {
         <div onClick={() => this.onChangeAmount(-diff)}>
           <SVG src="/public/images/minus-icon.svg" />
         </div>
-        <input value={this.props.value} onChange={this.onInputHandler} type="text" className="form-control"/>
+        <input value={this.props.value} onChange={this.onInputHandler} type="text" className="form-control" readOnly/>
         <div onClick={() => this.onChangeAmount(diff)}>
           <SVG src="/public/images/plus-icon.svg" />
         </div>

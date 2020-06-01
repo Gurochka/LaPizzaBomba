@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import store from 'App/store'
 import { observer } from 'mobx-react'
-import { observable } from 'mobx'
+import { observable, runInAction } from 'mobx'
 import Toggler from 'App/components/UI/Toggler'
 
 @observer
 export default class Product extends React.Component {
   @observable selected = store.pizzaSizes[0]
+  @observable disabled = false
 
   handleSelectSize = (size) => {
     this.selected = size;
@@ -14,9 +15,13 @@ export default class Product extends React.Component {
 
   handleAddToCart = () => {
     this.buttonEl.classList.add('added');
+    this.disabled = true;
 
     setTimeout(() => {
       if (this.buttonEl) this.buttonEl.classList.remove('added');
+      runInAction(() => {
+        this.disabled = false
+      })
     }, 2350);
     this.props.addToCart(this.props.item, this.selected);
   }
@@ -35,7 +40,6 @@ export default class Product extends React.Component {
             item.description && <div className="product-description">{item.description}</div>
           }
         </div>
-
         <div>
           {
             isPizza && (
@@ -59,6 +63,7 @@ export default class Product extends React.Component {
               className={`btn btn-primary btn-add-to-cart`} 
               onClick={this.handleAddToCart}
               ref={(el) => { this.buttonEl = el }}
+              disabled={this.disabled}
             >
               <b>Add</b>
                 <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">

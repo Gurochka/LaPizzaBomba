@@ -200,7 +200,7 @@ class Store {
     return total >=10 ? total : (total + this.deliveryCost);
   }
 
-  usdToEuro = price => Math.round(price*1.11*100)/100
+  usdToEuro = price => Math.round(price*0.9*100)/100
 
   saveCartInLocalStore(){
     localStorage.setItem('cart', JSON.stringify(this.cart));

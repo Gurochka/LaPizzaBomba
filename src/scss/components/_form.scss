@@ -32,5 +32,8 @@
     text-align: center; 
     border-color: $primary-color;
     margin-bottom: 0;
+    &[readonly]{
+      background-color: $white;
+    }
   }
 }
