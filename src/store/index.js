@@ -186,11 +186,12 @@ class Store {
 
   @computed get getTotalPrice(){
     if (!this.goods.length) return 0;
-    return this.cart.reduce((acc, item) => {
+    let price = this.cart.reduce((acc, item) => {
       const good = this.getGood(item.good_id);
       const price = this.getPrice(good, item.size);
       return acc + item.quantity*price;
     }, 0)
+    return Math.round(price*100)/100
   }
 
   @computed get totalWithDelivery(){

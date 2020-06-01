@@ -30,6 +30,7 @@ export default class Product extends React.Component {
     const weight = store.getWeight(good, item.size);
 
     const isPizza = store.isPizza(good);
+    const price = Math.round(store.getPrice(good, size ? size.id : null) * item.quantity *100) / 100;
 
     return  (
       <li className="cart-item d-flex justify-content-between align-items-center">
@@ -46,7 +47,7 @@ export default class Product extends React.Component {
         <div className="d-flex">
           <InputNumber value={item.quantity} onChange={this.itemQuantityChanged} />
           <div className="price">
-            <b>{store.getPrice(good, size ? size.id : null) * item.quantity} $</b>
+            <b>{ price } $</b>
             <SVG src="/public/images/trash-icon.svg" onClick={this.handleRemoveGood} />
           </div>
         </div>
