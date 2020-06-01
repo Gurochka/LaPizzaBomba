@@ -9,7 +9,7 @@ import Loader from 'App/components/UI/Loader'
 @observer
 export default class CartList extends React.Component {
   render(){
-    const { cart, goods, loadingGoods } = store;
+    const { cart, goods, loadingGoods, totalWithDelivery } = store;
     const total = store.getTotalPrice;
 
     return  (
@@ -25,10 +25,16 @@ export default class CartList extends React.Component {
         }
         {
           cart.length > 0 && (
-            <li className="cart-item cart-item-total">
-              <h4 className="ml-4">Order amount:</h4>
-              <div className="price">{total} $</div>
-            </li>
+            <div>
+              <li className="cart-item">
+                <h4 className="ml-4">Delivery cost (free for orders from 10 $)</h4>
+                <b className="price">{total > 10 ? 0 : store.deliveryCost} $</b>
+              </li>
+              <li className="cart-item cart-item-total">
+                <h4 className="ml-4">Order amount:</h4>
+                <div className="price">{totalWithDelivery} $ (~ {store.usdToEuro(totalWithDelivery)} €)</div>
+              </li>
+            </div>
           )
         }
         {

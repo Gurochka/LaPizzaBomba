@@ -136,6 +136,7 @@ class Store {
   /* ------------------- cart ------------------ */
 
   @observable cart = []
+  deliveryCost = 5
 
   @action getCart(){
     this.cart = JSON.parse(localStorage.getItem('cart') || '[]')
@@ -186,6 +187,13 @@ class Store {
       return acc + item.quantity*price;
     }, 0)
   }
+
+  @computed get totalWithDelivery(){
+    const total = this.getTotalPrice;
+    return total >=10 ? total : (total + this.deliveryCost);
+  }
+
+  usdToEuro = price => Math.round(price*1.11*100)/100
 
   saveCartInLocalStore(){
     localStorage.setItem('cart', JSON.stringify(this.cart));
