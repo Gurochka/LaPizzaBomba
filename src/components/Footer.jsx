@@ -6,7 +6,7 @@ export default function Footer(){
     <footer>
       <div className="main-footer">
         <div className="d-flex align-items-center">
-          <div><SVG className="logo mr-2" src="/src/public/images/logo.svg" /></div>
+          <div><SVG className="logo mr-2" src="/public/images/logo.svg" /></div>
           <h3>La Pizza Bomba!</h3>
         </div>
         <div className="about">

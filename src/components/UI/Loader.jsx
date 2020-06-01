@@ -6,7 +6,7 @@ export default function Loader(props){
     return (
       <div className="loader-blocker">
         <div className="loader"> 
-          <SVG src="/src/public/images/spinner.svg" />
+          <SVG src="/public/images/spinner.svg" />
         </div>
       </div>
     )

@@ -1,16 +1,18 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     app: './src/index.js'
   },
+
   output: {
-    filename: '[name].bundle.js',
-    publicPath: '/'
+    filename: '[name].[hash].bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
-  devtool: 'inline-source-map',
   
   resolve: {
     alias: {
@@ -37,22 +39,21 @@ module.exports = {
         ],
       },{
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ],
+        use: ['file-loader']
       }
     ]
   },
 
   plugins: [
-      new HtmlWebpackPlugin({
-        template: "./public/index.html"
-      })
-  ],
-
-  devServer: {
-    port: 9000,
-    open: true,
-    historyApiFallback: true
-  }
+    new CleanWebpackPlugin(),
+    new CopyPlugin({
+      patterns: [{
+        from: path.resolve(__dirname, 'public/images'),
+        to: path.resolve(__dirname, 'dist/public/images')
+      }]
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html"
+    })
+  ]
 };

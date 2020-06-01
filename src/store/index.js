@@ -18,6 +18,7 @@ class Store {
   }
 
   fetchPostUrl(url, data){
+    console.log('i ry tio fetch')
     return fetch('http://localhost:3000' + url, {
       method: 'POST',
       headers: {
@@ -26,6 +27,7 @@ class Store {
       body: JSON.stringify(data)     
     })
       .then(res => {
+        console.log('was I here?', res.ok, res)
         if (res.ok) return res.json();
         return { error: res.status + ' ' + res.statusText }
       })

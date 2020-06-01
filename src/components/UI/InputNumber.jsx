@@ -20,11 +20,11 @@ class InputNumber extends React.Component {
     return  (
       <div className="input-number d-flex">
         <div onClick={() => this.onChangeAmount(-diff)}>
-          <SVG src="/src/public/images/minus-icon.svg" />
+          <SVG src="/public/images/minus-icon.svg" />
         </div>
         <input value={this.props.value} onChange={this.onInputHandler} type="text" className="form-control"/>
         <div onClick={() => this.onChangeAmount(diff)}>
-          <SVG src="/src/public/images/plus-icon.svg" />
+          <SVG src="/public/images/plus-icon.svg" />
         </div>
       </div>
     )

@@ -15,7 +15,7 @@ class Header extends React.Component{
         <div className="container d-flex justify-content-between align-items-center">
           <div className="d-flex align-items-center">
             <Link to="/" className="brand d-flex align-items-center">
-              <SVG className="logo" src="/src/public/images/logo.svg" />
+              <SVG className="logo" src="/public/images/logo.svg" />
               <span>La Pizza Bomba!</span>
             </Link>
             <Link to="/">Menu</Link>
@@ -23,7 +23,7 @@ class Header extends React.Component{
           <div className="d-flex align-items-center">
             <Link to="/cart" className="header-cart">
               <div className="badge">{store.quantity}</div>
-              <SVG src="/src/public/images/shopping-basket-solid.svg" />
+              <SVG src="/public/images/shopping-basket-solid.svg" />
             </Link>
           </div>
         </div>

@@ -47,7 +47,7 @@ export default class Product extends React.Component {
           <InputNumber value={item.quantity} onChange={this.itemQuantityChanged}/>
           <div className="price">
             <b>{store.getPrice(good, size.id) * item.quantity} $</b>
-            <SVG src="/src/public/images/trash-icon.svg" onClick={this.handleRemoveGood} />
+            <SVG src="/public/images/trash-icon.svg" onClick={this.handleRemoveGood} />
           </div>
         </div>
       </li>
