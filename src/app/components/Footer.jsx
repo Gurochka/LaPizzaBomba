@@ -12,6 +12,7 @@ class Footer extends React.Component {
           </div>
           <div className="about">
             <h5>Contacts</h5>
+            <div>Our phone: <a href="tel:71234567890">+7(123)456-78-90</a></div>
           </div>
           <div className="image_copyrights">
             <h5>Image copyrights</h5>

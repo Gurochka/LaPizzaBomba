@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SVG from 'react-inlinesvg'
 
 import { observer } from 'mobx-react'
 import store from 'App/store'
@@ -8,7 +9,6 @@ import { observable, action } from 'mobx'
 import CartList from 'App/components/CartList'
 import CheckoutForm from 'App/components/CheckoutForm'
 import Loader from 'App/components/UI/Loader'
-import BackIcon from 'App/components/UI/icons/BackIcon'
 
 @observer
 class Cart extends React.Component {
@@ -49,7 +49,7 @@ class Cart extends React.Component {
             <>
               <h1 className="text-center with-return-btn w-50">
                 <div className="return-btn" onClick={() => this.changeStep('cart')}>
-                  <BackIcon />
+                  <SVG src="/src/public/images/back-icon.svg" />
                   <span>Return to cart</span>
                 </div>
                 Checkout

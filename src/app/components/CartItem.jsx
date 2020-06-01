@@ -4,7 +4,7 @@ import { observer } from 'mobx-react'
 import store from 'App/store'
 
 import InputNumber from 'App/components/UI/InputNumber'
-import TrashIcon from 'App/components/UI/icons/TrashIcon'
+import SVG from 'react-inlinesvg'
 
 @observer
 export default class Product extends React.Component {
@@ -47,7 +47,7 @@ export default class Product extends React.Component {
           <InputNumber value={item.quantity} onChange={this.itemQuantityChanged}/>
           <div className="price">
             <b>{store.getPrice(good, size) * item.quantity} $</b>
-            <TrashIcon onClick={this.handleRemoveGood}/>
+            <SVG src="/src/public/images/trash-icon.svg" onClick={this.handleRemoveGood} />
           </div>
         </div>
       </li>

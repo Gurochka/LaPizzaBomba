@@ -1,6 +1,5 @@
 import React from 'react'
-import MinusIcon from 'App/components/UI/icons/MinusIcon'
-import PlusIcon from 'App/components/UI/icons/PlusIcon' 
+import SVG from 'react-inlinesvg'
 
 class InputNumber extends React.Component {
   onChangeAmount(diff){
@@ -21,11 +20,11 @@ class InputNumber extends React.Component {
     return  (
       <div className="input-number d-flex">
         <div onClick={() => this.onChangeAmount(-diff)}>
-          <MinusIcon />
+          <SVG src="/src/public/images/minus-icon.svg" />
         </div>
         <input value={this.props.value} onChange={this.onInputHandler} type="text" className="form-control"/>
         <div onClick={() => this.onChangeAmount(diff)}>
-          <PlusIcon />
+          <SVG src="/src/public/images/plus-icon.svg" />
         </div>
       </div>
     )
