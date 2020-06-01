@@ -16,7 +16,45 @@ class Store {
       })
       .catch(error => { this.showFetchError(`Error: ${error}`) })
   }
-  
+
+  fetchPostUrl(url, data){
+    return fetch('http://localhost:3000' + url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)     
+    })
+      .then(res => {
+        if (res.ok) return res.json();
+        return { error: res.status + ' ' + res.statusText }
+      })
+      .catch(error => { this.showFetchError(`Error: ${error}`) })    
+  }
+
+  /* ------------------- Order ---------------------- */ 
+  @observable order = {}
+  @observable creatingOrder = false
+
+  @action createOrder(user_data){
+    this.creatingOrder = true
+
+    this.fetchPostUrl('/orders', user_data)
+      .then(res => {
+        runInAction(() => {
+          this.creatingOrder = false
+
+          if (res.error){
+            this.showFetchError(`Couldn't create order. Error: ${res.error}`);
+          } else {
+            this.order = res;
+            this.cart = [];
+            this.saveCartInLocalStore();
+          }
+        })
+      })
+  }
+
   /* ------------------- UI ---------------------- */
 
   @observable loadingGoods = false

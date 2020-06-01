@@ -3,53 +3,77 @@ import { Link } from 'react-router-dom'
 
 import { observer } from 'mobx-react'
 import store from 'App/store'
+import { observable, action } from 'mobx'
 
-import CartItem from 'App/components/CartItem'
+import CartList from 'App/components/CartList'
+import CheckoutForm from 'App/components/CheckoutForm'
 import Loader from 'App/components/UI/Loader'
+import BackIcon from 'App/components/UI/icons/BackIcon'
 
 @observer
 class Cart extends React.Component {
+  @observable step = 'cart' // 'cart' | 'checkout' | 'order'
+
+  @action changeStep(step){
+    this.step = step
+  }
+
+  handleSubmitForm = (user_data) => {
+    store.createOrder(user_data);
+    this.step = 'order';
+  }
 
   render(){
-    const { cart, goods, loadingGoods } = store;
-    const total = store.getTotalPrice;
+    const { cart, order, creatingOrder } = store;
 
     return  (
       <div className="container page-cart">
-        <h1 className="text-center">Your cart </h1>
-        <ul className="cart-list">
-          <Loader loading={loadingGoods} />
-          {
-            goods.length > 0 && cart.map(item => (
-              <CartItem key={item.size ? (item.good_id + item.size) : item.good_id} item={item} />
-            ))
-          }
-          {
-            goods.length == 0 && !loadingGoods && <div> Coundl't display cart without goods =( </div>
-          }
-          {
-            cart.length > 0 && (
-              <li className="cart-item cart-item-total">
-                <h4 className="ml-4">Order amount:</h4>
-                <div className="price">{total} $</div>
-              </li>
-            )
-          }
-          {
-            cart.length == 0 && (
-              <li className="cart-item">
-                <h4 className="text-center w-100">
-                  You haven't added anything to your shopping cart yet. 
-                  <br/>
-                  Check out our <Link to="/">Menu</Link>
-                </h4>
-              </li>
-            )
-          }
-
-        </ul>
-        <button className="btn btn-primary">Proceed to checkout</button>
-
+        {
+          this.step == 'cart' && (
+            <>
+              <h1 className="text-center">Your cart </h1>
+              <CartList />
+              { cart.length > 0 && (
+                <div className="text-center mt-5">
+                  <button className="btn btn-primary" onClick={() => this.changeStep('checkout')}>
+                    Proceed to checkout
+                  </button>
+                </div>
+                )
+              }
+            </>
+          )
+        }
+        {
+          this.step == 'checkout' && (
+            <>
+              <h1 className="text-center with-return-btn w-50">
+                <div className="return-btn" onClick={() => this.changeStep('cart')}>
+                  <BackIcon />
+                  <span>Return to cart</span>
+                </div>
+                Checkout
+              </h1>
+              <CheckoutForm onSubmit={this.handleSubmitForm} />
+            </>
+          )
+        }
+        {
+          this.step == 'order' && order.id && creatingOrder && (
+            <>
+              <Loader loading={creatingOrder} />
+              <h1>Creating an order</h1>
+            </>
+          )
+        }
+        {
+          this.step == 'order' && order.id && !creatingOrder && (
+            <>
+              <h4 className="text-center">Your order #{order.id} was successfully created </h4>
+              <p className="text-center">We have already started preparing your order. <br/> Our manager will contact you soon to confirm details</p>
+            </>
+          )
+        }
       </div>
     )
   }
