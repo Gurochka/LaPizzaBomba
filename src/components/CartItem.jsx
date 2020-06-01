@@ -9,13 +9,13 @@ import SVG from 'react-inlinesvg'
 @observer
 export default class Product extends React.Component {
   handleRemoveGood = () => {
-    store.removeFromCart(this.props.item.good_id, this.props.item.quantity)
+    store.removeFromCart(this.props.item, this.props.item.quantity)
   }
 
   itemQuantityChanged = (val) => {
     const { item } = this.props;
     if (val < item.quantity){
-      store.removeFromCart(item.good_id, 1)
+      store.removeFromCart(item, 1)
     }  else {
       const good = store.goods.find(good => good.id == item.good_id);
       const size = store.getPizzaSize(item.size);

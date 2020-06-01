@@ -169,12 +169,10 @@ class Store {
     }
   }
 
-  @action removeFromCart(good_id, quantity = 1){
-    const goodIdx = this.cart.findIndex(item => item.good_id == good_id);
+  @action removeFromCart(cartItem, quantity = 1){
+    const goodIdx = this.cart.findIndex(item => item.good_id == cartItem.good_id && item.size == cartItem.size);
   
     if (goodIdx != -1){
-      let cartItem = this.cart[goodIdx];
-
       let newQuantity = cartItem.quantity - quantity;
       if (newQuantity === 0) this.cart.splice(goodIdx, 1)
         else cartItem.quantity = newQuantity;
