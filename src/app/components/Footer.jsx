@@ -7,8 +7,9 @@ class Footer extends React.Component {
     return  (
       <footer>
         <div className="main-footer">
-          <div className="logo">
-            <h5>Logo</h5>
+          <div className="d-flex align-items-center">
+            <div><SVG className="logo mr-2" src="/src/public/images/logo.svg" /></div>
+            <h3>La Pizza Bomba!</h3>
           </div>
           <div className="about">
             <h5>Contacts</h5>
