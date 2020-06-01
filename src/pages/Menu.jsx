@@ -22,7 +22,7 @@ class Menu extends React.Component {
           ))
         }
         {
-          categories.length == 0 && !loadingCategories && <h1>Our server is down right now, and we can't load anything. Please, contact administrator.</h1>
+          categories.length == 0 && !loadingCategories && <h2>Our server is down right now, and we can't load anything. Please, contact administrator.</h2>
         }
       </div>
     )
