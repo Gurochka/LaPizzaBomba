@@ -119,12 +119,12 @@ class Store {
       })
   }
 
-  getPrice = (good, selected) => {
-    return this.isPizza(good) ? good.price[this.getPizzaSizeIdx(selected.size) || 0] : good.price
+  getPrice = (good, size_id) => {
+    return this.isPizza(good) ? good.price[this.getPizzaSizeIdx(size_id) || 0] : good.price
   }
 
-  getWeight = (good, selected) => {
-    let weight = this.isPizza(good) ? good.weight[this.getPizzaSizeIdx(selected.size) || 0] : good.weight;
+  getWeight = (good, side_id) => {
+    let weight = this.isPizza(good) ? good.weight[this.getPizzaSizeIdx(side_id) || 0] : good.weight;
     return weight ? (weight + (this.isDrink(good) ? ' l' : ' gr')) : ''
   }
 
@@ -183,7 +183,7 @@ class Store {
     if (!this.goods.length) return 0;
     return this.cart.reduce((acc, item) => {
       const good = this.getGood(item.good_id);
-      const price = this.getPrice(good, item);
+      const price = this.getPrice(good, item.size);
       return acc + item.quantity*price;
     }, 0)
   }

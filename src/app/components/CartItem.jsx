@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { computed } from 'mobx'
+import { computed, toJS } from 'mobx'
 import { observer } from 'mobx-react'
 import store from 'App/store'
 
@@ -27,7 +27,7 @@ export default class Product extends React.Component {
     const { item } = this.props;
     const good = store.goods.find(good => good.id == item.good_id);
     const size = store.getPizzaSize(item.size);
-    const weight = store.getWeight(good, size);
+    const weight = store.getWeight(good, item.size);
 
     const isPizza = store.isPizza(good);
 
@@ -46,7 +46,7 @@ export default class Product extends React.Component {
         <div className="d-flex">
           <InputNumber value={item.quantity} onChange={this.itemQuantityChanged}/>
           <div className="price">
-            <b>{store.getPrice(good, size) * item.quantity} $</b>
+            <b>{store.getPrice(good, size.id) * item.quantity} $</b>
             <SVG src="/src/public/images/trash-icon.svg" onClick={this.handleRemoveGood} />
           </div>
         </div>

@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import store from 'App/store'
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
 import Toggler from 'App/components/UI/Toggler'
 
+@observer
 export default class Product extends React.Component {
-  state = {
-    selectedIdx: 0
-  }
+  @observable selected = store.pizzaSizes[0]
 
   handleSelectSize = (size) => {
-    let selectedIdx = store.pizzaSizes.findIndex(val => val.id == size.id);
-    this.setState({ selectedIdx: selectedIdx })
+    this.selected = size;
   }
 
   handleAddToCart = () => {
@@ -18,14 +18,13 @@ export default class Product extends React.Component {
     setTimeout(() => {
       if (this.buttonEl) this.buttonEl.classList.remove('added');
     }, 2350);
-    this.props.addToCart(this.props.item, store.pizzaSizes[this.state.selectedIdx]);
+    this.props.addToCart(this.props.item, this.selected);
   }
 
   render(){
     const { item } = this.props;
-    const { selectedIdx, isAdded } = this.state;
+    const { selected } = this;
     const isPizza = store.isPizza(item);
-    const selected = store.pizzaSizes[selectedIdx]
 
     return  (
       <div className="product-card d-flex flex-column justify-content-between">
@@ -41,8 +40,8 @@ export default class Product extends React.Component {
           {
             isPizza && (
               <>
-                <Toggler values={store.pizzaSizes} selected={selected} onSelect={this.handleSelectSize} />
-                <div className="product-weight"> {item.weight[selectedIdx]}gr, {selected.diameter} cm </div>
+                <Toggler values={store.pizzaSizes} selected={selected} onSelect={size => { this.selected = size}} />
+                <div className="product-weight"> {store.getWeight(item, selected.id)} , {selected.diameter} cm </div>
               </>
             )
           }
@@ -54,7 +53,7 @@ export default class Product extends React.Component {
             )
           }
           <div className="d-flex justify-content-between py-2 align-items-center">
-            <b>{ isPizza ? item.price[selectedIdx] : item.price } $</b>
+            <b> {store.getPrice(item, selected.id)} $</b>
 
             <button 
               className={`btn btn-primary btn-add-to-cart`} 
