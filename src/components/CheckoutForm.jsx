@@ -54,7 +54,7 @@ export default class CheckoutForm extends React.Component {
           value={this.user.name} 
           onChange={(e) => this.handleChange('name', e)}
         />
-        <div className="mb-2">
+        <div className="mb-3">
           <InputPhone className="form-control"  type="text" placeholder="Phone number *" name="phone" required 
             value={this.user.phone}
             onChange={(e) => this.handleChange('phone', e)} 
@@ -65,7 +65,7 @@ export default class CheckoutForm extends React.Component {
         
         <div className="text-center mb-2">Address information:</div>
         
-        <div className="mb-2">
+        <div className="mb-3">
           <input className="form-control" type="text" placeholder="City/Town *" name="city" required
             value={this.user.city}
             onChange={(e) => this.handleChange('city', e) } 
@@ -73,7 +73,7 @@ export default class CheckoutForm extends React.Component {
           { !this.user.city && <div className="form-field-error">City is required.</div> }
         </div>
 
-        <div className="mb-2">
+        <div className="mb-3">
           <input className="form-control" type="text" placeholder="Street *" name="street" required
             value={this.user.street}
             readOnly={!this.user.city} 
@@ -83,7 +83,7 @@ export default class CheckoutForm extends React.Component {
         </div>
         
         <div className="d-flex">
-          <div className="w-50 mb-2">
+          <div className="w-50 mb-3">
             <input className="form-control mr-2" type="text" placeholder="House number *" name="house" required
               value={this.user.house}
               readOnly={!this.user.street}  
@@ -91,7 +91,7 @@ export default class CheckoutForm extends React.Component {
             />
             { !this.user.house && <div className="form-field-error">House number is required.</div> }
           </div>
-          <div className="w-50 mb-2">
+          <div className="w-50 mb-3">
             <input className="form-control ml-2" type="text" placeholder="Appartment number" name="number"
               value={this.user.number}
               readOnly={!this.user.house}  

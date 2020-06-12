@@ -1,7 +1,7 @@
 .form-control{
   border: 1px solid $gray-400;
   width: 100%;
-  padding: 0.5rem 1rem;  
+  padding: 0.8rem 1rem;
   font-size: 0.9em;
   &[readonly]{
     background-color: $gray-200;
@@ -29,6 +29,7 @@
     border-left: none;
     border-right: none;
     width: 3rem;
+    padding: 0.5rem 1rem;
     text-align: center; 
     border-color: $primary-color;
     margin-bottom: 0;
