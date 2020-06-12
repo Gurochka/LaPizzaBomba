@@ -4,9 +4,7 @@ footer{
   padding: 0 0.5rem;
 
   .main-footer{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    @include flex-container($justify: space-around, $direction: column);
     margin: 1rem 0 0 1rem;
     & > div{
       margin-bottom: 1rem;
